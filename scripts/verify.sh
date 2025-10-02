@@ -1,13 +1,12 @@
 #!/bin/bash
 set -e
 
-cd /home/ec2-user/app
-
-# Check that at least one container is running
-if docker ps | grep -q my_app; then
-  echo "App container is running"
+# Verify the app container is running
+if docker ps --format '{{.Names}}' | grep -q "my_app"; then
+  echo "App container 'my_app' is running"
   exit 0
 else
-  echo "App container is NOT running"
+  echo "App container 'my_app' is NOT running"
+  docker ps -a   # show all containers for debugging
   exit 1
 fi
