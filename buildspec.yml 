@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Build started on `date`
+      - echo Logging in if needed...
+  build:
+    commands:
+      - echo Building application...
+      - echo Packaging files...
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - '**/*'
+  name: odosiv-dev-build-artifact
