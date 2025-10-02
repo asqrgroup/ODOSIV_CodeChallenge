@@ -1,24 +1,14 @@
 version: '3.8'
 
 services:
-  db:
+  app:
     build: .
-    container_name: pg17_cron
-    environment:
-      POSTGRES_DB: ${DB_NAME:-appdb}
-      POSTGRES_USER: ${DB_USER:-appuser}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-secret}
+    container_name: my_app
     ports:
-      - "5432:5432"
-    command:
-      [
-        "postgres",
-        "-c", "shared_preload_libraries=pg_cron",
-        "-c", "cron.database_name=appdb"
-      ]
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./init:/docker-entrypoint-initdb.d:ro
-
-volumes:
-  pgdata:
+      - "80:80"   # Expose app on port 80 (HTTP)
+    environment:
+      DB_HOST: my-rds-instance.abcdefgh.us-east-1.rds.amazonaws.com
+      DB_PORT: 5432
+      DB_NAME: appdb
+      DB_USER: appuser
+      DB_PASSWORD: secret
