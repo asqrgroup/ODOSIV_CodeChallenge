@@ -1,6 +1,11 @@
+# Minimal Dockerfile - no requirements.txt
 FROM python:3.11-slim
+
+# Set work directory inside container
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+# Copy everything from repo into container
 COPY . .
-CMD ["python", "app.py"]
+
+# Run a simple command so the container stays up
+CMD ["python3", "-m", "http.server", "80"]
