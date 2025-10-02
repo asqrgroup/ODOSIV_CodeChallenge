@@ -16,7 +16,11 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
-  discard-paths: no
+    - appspec.yml
+    - docker-compose.yml
+    - Dockerfile
+    - scripts/**/*   # all scripts
+    - '**/*'         # fallback (keeps other files if needed)
   base-directory: .
+  discard-paths: no
   name: odosiv-dev-build-artifact
