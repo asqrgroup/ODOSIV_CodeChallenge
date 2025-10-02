@@ -3,13 +3,13 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing dependencies..."
+      - echo "Nothing to install"
   pre_build:
     commands:
       - echo "Build started on $(date)"
   build:
     commands:
-      - echo "No build needed for docker-compose project"
+      - echo "No build required (docker-compose will run on EC2)"
   post_build:
     commands:
       - echo "Build completed on $(date)"
