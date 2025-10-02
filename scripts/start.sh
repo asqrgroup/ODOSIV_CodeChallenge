@@ -1,12 +1,17 @@
 #!/bin/bash
 set -e
 
+echo "===== CodeDeploy: STARTING APP CONTAINER ====="
+echo "Running as: $(whoami)"
+echo "Current dir before cd: $(pwd)"
+
+# Always switch into the app folder
 cd /home/ec2-user/app
 
-# Stop old containers safely
-docker compose down || true
+# Stop any old containers (ignore errors)
+docker compose -f docker-compose.yml down || true
 
-# Build and start app container only
-docker compose up -d
+# Start new container
+docker compose -f docker-compose.yml up -d
 
-echo "App container started (using RDS for database)"
+echo "===== CodeDeploy: CONTAINER STARTED SUCCESSFULLY ====="
