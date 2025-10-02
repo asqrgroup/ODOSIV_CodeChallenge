@@ -1,6 +1,6 @@
-FROM postgres:17
-
-# Install pg_cron for Postgres 17
-RUN apt-get update \
- && apt-get install -y postgresql-17-cron \
- && rm -rf /var/lib/apt/lists/*
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
