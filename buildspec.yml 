@@ -1,17 +1,22 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
   pre_build:
     commands:
-      - echo Build started on `date`
+      - echo "Build started on $(date)"
   build:
     commands:
-      - echo Building application...
+      - echo "No build needed for docker-compose project"
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo "Build completed on $(date)"
 
 artifacts:
   files:
     - '**/*'
+  discard-paths: no
+  base-directory: .
   name: odosiv-dev-build-artifact
