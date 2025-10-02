@@ -3,7 +3,7 @@ set -e
 
 cd /home/ec2-user/app
 
-docker compose pull
-docker compose up -d
+/usr/local/bin/docker-compose pull
+/usr/local/bin/docker-compose up -d
 
 echo "Containers started"
