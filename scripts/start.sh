@@ -1,11 +1,11 @@
 #!/bin/bash
-
 set -e
 
+mkdir -p /home/ec2-user/app
 cd /home/ec2-user/app
 
-# Use Docker Compose V2 syntax
-docker compose pull
-docker compose up -d
+if [ -f docker-compose.yml ]; then
+  docker compose down || true
+fi
 
-echo "Containers started"
+echo "Stop script completed"
