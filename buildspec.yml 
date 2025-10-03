@@ -17,6 +17,3 @@ phases:
 artifacts:
   files:
     - '**/*'
-  discard-paths: no
-  base-directory: .
-  name: odosiv-dev-build-artifact
