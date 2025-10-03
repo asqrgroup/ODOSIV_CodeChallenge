@@ -1,6 +1,8 @@
 version: 0.0
 os: linux
 
+- source: app/docker-compose.yml
+
 files:
   - source: /
     destination: /home/ec2-user/app
