@@ -18,4 +18,5 @@ cd /home/ec2-user/app
   -e DB_PASSWORD=secret \
   odosiv-app
 
+
 echo "Container started"
