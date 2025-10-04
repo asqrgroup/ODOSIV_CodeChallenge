@@ -8,4 +8,5 @@ else
   echo "Container NOT running"
   /usr/bin/docker ps -a
   exit 1
+
 fi
