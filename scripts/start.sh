@@ -10,7 +10,7 @@ echo "Inside APP DIR  $APP_DIR"
 #/usr/bin/docker compose -f /home/ec2-user/app/docker-compose.yml down || true
 #/usr/bin/docker compose -f /home/ec2-user/app/docker-compose.yml up -d --build
 if [ ! -f "docker-compose.yml" ]; then
-  echo "ERROR: docker-compose.yml not found in APP DIR $APP_DIR"
+  echo "ERROR: Here docker-compose.yml not found in APP DIR $APP_DIR"
   exit 1
 fi
 /usr/bin/docker compose -f docker-compose.yml down || true
