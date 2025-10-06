@@ -6,4 +6,5 @@ phases:
 artifacts:
   files:
     - '**/*'
+
   base-directory: docker
