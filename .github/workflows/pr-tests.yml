@@ -1,0 +1,31 @@
+name: PR Test Suite
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read .nvmrc
+        id: read-nvmrc
+        run: |
+          # read .nvmrc (trim whitespace) and set as step output
+          NODE_VERSION=$(cat .nvmrc | tr -d '\n' | tr -d '\r')
+          echo "node-version=$NODE_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Use Node.js from .nvmrc
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.read-nvmrc.outputs.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
