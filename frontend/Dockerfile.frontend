@@ -1,0 +1,21 @@
+## Frontend Dockerfile for local development using Node + Vite
+# This container runs the Vite dev server so index.html is served from inside
+# the frontend container (dev-only). It uses a Node base image (no nginx).
+FROM node:lts-alpine
+
+WORKDIR /app
+
+# Install deps early for caching
+COPY package.json package-lock.json* ./
+RUN npm ci --silent
+
+# Copy project files (source and public/index.html)
+COPY . .
+
+# Vite default port is 5173. Bind to 0.0.0.0 so it's reachable from host.
+ENV PORT=5173
+EXPOSE 5173
+
+# Start Vite dev server and bind to all interfaces so the host can connect to the container.
+# Passing `--host 0.0.0.0` ensures Vite listens on container network interfaces.
+CMD ["sh", "-c", "npm run dev -- --host 0.0.0.0 --port 5173"]
