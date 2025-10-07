@@ -59,7 +59,7 @@ These are defined in `package.json` and kept intentionally small:
 
 - `npm run dev` — start Vite dev server
 - `npm run serve-data` — start the simple Express data server (`server/index.js`)
-- `npm run build` — run `tsc -b` then `vite build` (production frontend build)
+- `npm run build` — run `tsc -b` then `vite build` (production frontend build, outputs to `dist/`)
 - `npm run preview` — preview the production build locally via `vite preview`
 - `npm run test` — run Vitest once
 - `npm run test:watch` — run Vitest in watch mode
