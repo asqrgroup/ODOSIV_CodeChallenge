@@ -108,6 +108,20 @@ tr th {
   border: 1px solid rgba(255,255,255,0.12);
 }
 
+.user-table tbody tr th:focus,
+.user-table tbody tr td:focus {
+  outline: 2px solid #4A90E2;
+  outline-offset: 2px;
+  background: rgba(74, 144, 226, 0.1);
+}
+
+.user-table tbody tr th:focus-visible,
+.user-table tbody tr td:focus-visible {
+  outline: 2px solid #4A90E2;
+  outline-offset: 2px;
+  background: rgba(74, 144, 226, 0.1);
+}
+
 .user-table tbody tr th + th,
 .user-table tbody tr th + td,
 .user-table tbody tr td + th,
