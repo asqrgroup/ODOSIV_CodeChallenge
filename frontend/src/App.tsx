@@ -98,12 +98,12 @@ function App() {
       <h1>ODOS IV</h1>
       <PipelineHealth status={health} />
       </div>
-        <div className="app-container">
+        <main className="app-container">
         <div className="dashboard-container">
           {error && <div className="error-message">Error: {error}</div>}
           <UserList users={users} FilterComponent={UserFilter} onSearch={handleSearch} loading={loading} />
         </div>
-      </div>
+      </main>
     </>
   )
 }
