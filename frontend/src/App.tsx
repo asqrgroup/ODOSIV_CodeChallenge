@@ -94,10 +94,10 @@ function App() {
 
   return (
     <>
-      <div className='app-header'>
+      <header className='app-header'>
       <h1>ODOS IV</h1>
       <PipelineHealth status={health} />
-      </div>
+      </header>
         <main className="app-container">
         <div className="dashboard-container">
           {error && <div className="error-message">Error: {error}</div>}
