@@ -14,7 +14,7 @@ h2 {
 
 .user-table {
   width: 100%;
-  border-spacing: 0 0.75rem; /* vertical spacing between rows */
+  border-spacing: 0 0.75rem;
 }
 
 .user-table thead {
@@ -24,19 +24,19 @@ h2 {
 .user-table th,
 .user-table td {
   padding: 0.5rem 0.75rem;
-  text-align: left; /* left-align headers and cells */
+  text-align: left;
 }
 
 .user-table tbody tr {
-  display: table-row; /* keep semantics */
-  background: transparent; /* transparent card background */
-  box-shadow: none; /* remove drop shadow to keep outline look clean */
+  display: table-row;
+  background: transparent;
+  box-shadow: none;
 }
 
 .user-table tbody tr th,
 .user-table tbody tr td {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.12); /* visible white outline on cells */
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
 .user-table tbody tr th + th,
