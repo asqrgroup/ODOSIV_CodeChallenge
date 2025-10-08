@@ -135,7 +135,7 @@ tr th {
     outline: 4px solid;
     outline-offset: 2px;
   }
-  
+
   .user-table tbody tr {
     border: 2px solid;
   }
@@ -165,17 +165,17 @@ tr th {
     overflow-x: auto;
     width: 100%;
   }
-  
+
   .user-table {
     min-width: 50rem;
   }
-  
+
   .user-table th,
   .user-table td {
     min-width: 5rem;
     white-space: nowrap;
   }
-  
+
   .user-table tbody tr th:first-child,
   .user-table tbody tr td:first-child {
     min-width: 8rem;
