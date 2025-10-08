@@ -5,25 +5,25 @@ import { UserList } from '@components'
 import type { User } from '@types'
 
 const users: User[] = [
-  { 
-    id: 1, 
-    name: 'Alice', 
-    high_bpm: 120, 
-    low_bpm: 60, 
-    avg_bpm: 80, 
-    avg_confidence: 0.95, 
+  {
+    id: 1,
+    name: 'Alice',
+    high_bpm: 120,
+    low_bpm: 60,
+    avg_bpm: 80,
+    avg_confidence: 0.95,
     bpm_stddev: 5,
     sample_count: 100,
     last_updated: '2024-01-01T00:00:00Z',
     window: { start: '2024-01-01T00:00:00Z', end: '2024-01-01T01:00:00Z' }
   },
-  { 
-    id: 2, 
-    name: 'Bob', 
-    high_bpm: 110, 
-    low_bpm: 55, 
-    avg_bpm: 75, 
-    avg_confidence: 0.9, 
+  {
+    id: 2,
+    name: 'Bob',
+    high_bpm: 110,
+    low_bpm: 55,
+    avg_bpm: 75,
+    avg_confidence: 0.9,
     bpm_stddev: 4,
     sample_count: 80,
     last_updated: '2024-01-02T00:00:00Z',
