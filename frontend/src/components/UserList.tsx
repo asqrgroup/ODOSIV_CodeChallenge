@@ -67,29 +67,32 @@ const UserList: FC<{
             <FilterComponent query={query} onQueryChange={setQuery} onSubmit={handleSubmit} />
           </div>
       ) : (
-        <form onSubmit={handleFormSubmit} className="search-form">
-          <div>
-            <label htmlFor="user-search" className="sr-only">
-              Search users by name
-            </label>
-            <input
-              id="user-search"
-              type="search"
-              placeholder="Search by name"
-              value={query}
-              onChange={handleQueryChange}
-              aria-label="Search users by name"
-              className="search-input"
-            />
-            <button
-              type="submit"
-              aria-label="Search for users"
-              className="search-button"
-            >
-              Search
-            </button>
-          </div>
-        </form>
+        <>
+          <h2 id="user-list-heading">Users</h2>
+          <form onSubmit={handleFormSubmit} className="search-form">
+            <div>
+              <label htmlFor="user-search" className="sr-only">
+                Search users by name
+              </label>
+              <input
+                id="user-search"
+                type="search"
+                placeholder="Search by name"
+                value={query}
+                onChange={handleQueryChange}
+                aria-label="Search users by name"
+                className="search-input"
+              />
+              <button
+                type="submit"
+                aria-label="Search for users"
+                className="search-button"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+        </>
       )}
 
       {loading && <p>Loading data...</p>}
