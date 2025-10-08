@@ -17,7 +17,7 @@ const UserList: FC<{
   const [lastSearched, setLastSearched] = useState('')
   const [isSticky, setIsSticky] = useState(false)
   const [focusedCell, setFocusedCell] = useState<{row: number, col: number} | null>(null)
-  
+
   const tableContainerRef = useRef<HTMLDivElement>(null)
   const tableRef = useRef<HTMLTableElement>(null)
 
@@ -40,7 +40,7 @@ const UserList: FC<{
 
     const rows = Array.from(tableRef.current.querySelectorAll('tbody tr'))
     const cols = 9 // Number of columns
-    
+
     const { row, col } = focusedCell
     let newRow = row
     let newCol = col
@@ -107,64 +107,64 @@ const UserList: FC<{
 
   const rows = (users ?? []).map((u, rowIndex) => (
     <tr key={u.id} aria-label={`User data for ${u.name}`}>
-      <th 
-        scope="row" 
+      <th
+        scope="row"
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 0 })}
         aria-describedby="name-column-description"
       >
         {u.name}
       </th>
-      <td 
+      <td
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 1 })}
         aria-describedby="high-bpm-column-description"
       >
         {u.high_bpm}
       </td>
-      <td 
+      <td
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 2 })}
         aria-describedby="low-bpm-column-description"
       >
         {u.low_bpm}
       </td>
-      <td 
+      <td
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 3 })}
         aria-describedby="avg-bpm-column-description"
       >
         {typeof u.avg_bpm === 'number' ? u.avg_bpm.toFixed(1) : '\u2014'}
       </td>
-      <td 
+      <td
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 4 })}
         aria-describedby="avg-confidence-column-description"
       >
         {typeof u.avg_confidence === 'number' ? u.avg_confidence.toFixed(2) : '\u2014'}
       </td>
-      <td 
+      <td
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 5 })}
         aria-describedby="bpm-stddev-column-description"
       >
         {typeof u.bpm_stddev === 'number' ? u.bpm_stddev : '\u2014'}
       </td>
-      <td 
+      <td
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 6 })}
         aria-describedby="sample-count-column-description"
       >
         {typeof u.sample_count === 'number' ? u.sample_count.toLocaleString() : '\u2014'}
       </td>
-      <td 
+      <td
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 7 })}
         aria-describedby="window-start-column-description"
       >
         {u.window?.start ? new Date(u.window.start).toLocaleString() : '\u2014'}
       </td>
-      <td 
+      <td
         tabIndex={0}
         onFocus={() => setFocusedCell({ row: rowIndex, col: 8 })}
         aria-describedby="last-updated-column-description"
@@ -212,22 +212,22 @@ const UserList: FC<{
       {!loading && rows.length === 0 ? (
         <p>{lastSearched ? `No ${lastSearched} user available.` : 'No users available.'}</p>
       ) : (
-        <div 
-          className="table-container" 
-          ref={tableContainerRef} 
-          tabIndex={0} 
+        <div
+          className="table-container"
+          ref={tableContainerRef}
+          tabIndex={0}
           aria-label="Scrollable table of user data. Use arrow keys to navigate between cells."
           onKeyDown={handleTableKeyDown}
           role="application"
           aria-describedby="table-instructions"
         >
           <div id="table-instructions" className="sr-only">
-            Navigate the table using arrow keys. Press Home to go to the first column, End to go to the last column. 
+            Navigate the table using arrow keys. Press Home to go to the first column, End to go to the last column.
             Use Ctrl+Home to go to the first cell, Ctrl+End to go to the last cell.
           </div>
-          <table 
-            className="user-table" 
-            role="table" 
+          <table
+            className="user-table"
+            role="table"
             aria-describedby="user-list-heading table-instructions"
             ref={tableRef}
           >
