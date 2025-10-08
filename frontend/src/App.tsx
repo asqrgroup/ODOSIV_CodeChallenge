@@ -93,12 +93,18 @@ function App() {
   }, [rawData])
 
   return (
-      <div className="app-container">
-    <PipelineHealth status={health} />
-    <h2>Data</h2>
-        {error && <div className="error-message">Error: {error}</div>}
-        <UserList users={users} FilterComponent={UserFilter} onSearch={handleSearch} loading={loading} />
+    <>
+      <div className='app-header'>
+      <h1>ODOS IV</h1>
+      <PipelineHealth status={health} />
       </div>
+        <div className="app-container">
+        <div className="dashboard-container">
+          {error && <div className="error-message">Error: {error}</div>}
+          <UserList users={users} FilterComponent={UserFilter} onSearch={handleSearch} loading={loading} />
+        </div>
+      </div>
+    </>
   )
 }
 

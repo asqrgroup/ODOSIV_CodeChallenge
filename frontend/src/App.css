@@ -4,21 +4,78 @@
   padding: 0 0 4rem 0;
 }
 
+.app-header {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.app-container {
+  padding: 1rem 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  height: 80vh;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 h1 {
   padding-left: 1.5rem;
+  font-weight: 100;
+  font-style: italic;
 }
 
 h2 {
-  margin-top: 0;
+  font-size: 2.5rem;
+  font-weight: 100;
+}
+
+.table-container {
+  max-height: 65vh;
+  overflow-y: auto;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .user-table {
   width: 100%;
   border-spacing: 0 0.75rem;
+  padding: 2rem;
 }
 
 .user-table thead {
   border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+}
+
+.user-table thead.sticky {
+  background: black;
+  color: lightgray;
+  z-index: 1;
+  border-radius: 2rem;
+}
+
+th {
+  font-weight: 400;
+}
+
+tr td,
+tr th {
+  font-size: .9em;
+  font-weight: 100;
+}
+
+tr th {
+  font-weight: 500;
 }
 
 .user-table th,
@@ -29,8 +86,10 @@ h2 {
 
 .user-table tbody tr {
   display: table-row;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
   box-shadow: none;
+  overflow-x: auto;
 }
 
 .user-table tbody tr th,
@@ -68,7 +127,7 @@ h2 {
     padding: 1.75rem;
   }
   .user-table tbody tr th[scope="row"] {
-    font-weight: 600;
+    font-weight: 300;
     grid-column: 1 / -1;
   }
   .user-table tbody tr td {
@@ -76,41 +135,40 @@ h2 {
   }
 }
 
-.sr-only {
-  position: absolute !important;
-  height: 0.0625rem; width: 0.0625rem;
-  overflow: hidden;
-  clip: rect(0.0625rem, 0.0625rem, 0.0625rem, 0.0625rem);
-  white-space: nowrap;
-}
-
 .search-form {
   margin-bottom: 0.75rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  justify-content: flex-end;
+  border-radius: 0.5rem;
+  width: 33rem;
 }
 
 .search-input {
-  padding: 0.375rem 0.5rem;
+  padding: 1rem 1.5rem;
   flex: 1;
   max-width: 22.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3rem;
+
 }
 
 .search-button {
-  padding: 0.375rem 1rem;
+  padding: 1rem 1.5rem;
   cursor: pointer;
+  background: black;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3rem;
+  color: lightgray;
 }
 
 .table-container {
   overflow-x: auto;
 }
-
-.app-container {
-  padding: 2.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 .error-message {
   color: red;
 }
@@ -121,6 +179,7 @@ h2 {
   justify-content: flex-end;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
+  margin-right: 1.5rem;
 }
 
 .status-indicator {
@@ -143,5 +202,13 @@ h2 {
 }
 
 .pipeline-health-text {
-  font-weight: 600;
+  font-weight: 300;
+}
+
+.sr-only {
+  position: absolute !important;
+  height: 0.0625rem; width: 0.0625rem;
+  overflow: hidden;
+  clip: rect(0.0625rem, 0.0625rem, 0.0625rem, 0.0625rem);
+  white-space: nowrap;
 }
