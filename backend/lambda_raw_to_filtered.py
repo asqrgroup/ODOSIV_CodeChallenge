@@ -8,7 +8,9 @@ from psycopg import sql
 from psycopg.rows import dict_row
 from psycopg.types.json import Json
 
-APP_DSN = ("dbname=testdb user=appuser password=secret host=localhost port=5432")
+APP_DSN = (
+    "will be changed in future"
+)
 
 
 logger = logging.getLogger(__name__)
