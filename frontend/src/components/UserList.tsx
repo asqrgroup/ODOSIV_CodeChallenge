@@ -97,7 +97,7 @@ const UserList: FC<{
       {!loading && rows.length === 0 ? (
         <p>{lastSearched ? `No ${lastSearched} user available.` : 'No users available.'}</p>
       ) : (
-        <div className="table-container" ref={tableContainerRef}>
+        <div className="table-container" ref={tableContainerRef} tabIndex={0} aria-label="Scrollable table of user data">
           <table className="user-table" role="table" aria-describedby="user-list-heading">
             <caption className="sr-only">Per-user BPM and confidence metrics</caption>
             <thead className={isSticky ? 'sticky' : ''}>
