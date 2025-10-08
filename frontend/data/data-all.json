@@ -1,0 +1,12 @@
+{
+  "id": 0,
+  "name": "all",
+  "high_bpm": 130,
+  "low_bpm": 50,
+  "avg_bpm": 90.0,
+  "avg_confidence": 0.85,
+  "bpm_stddev": 15,
+  "sample_count": 138240,
+  "window": { "start": "2025-10-01T00:00:00Z", "end": "2025-10-02T00:00:00Z" },
+  "last_updated": "2025-10-06T00:00:00Z"
+}

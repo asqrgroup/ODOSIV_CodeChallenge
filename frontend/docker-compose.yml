@@ -1,0 +1,34 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    volumes:
+      - ./:/app:delegated
+      - /app/node_modules
+    networks:
+      - odos-net
+
+  server:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    environment:
+      - PORT=4000
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./data:/usr/src/app/data:ro
+      - ./server:/usr/src/app/server:delegated
+    networks:
+      - odos-net
+
+networks:
+  odos-net:
+    driver: bridge

@@ -1,0 +1,146 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 0 4rem 0;
+}
+
+h1 {
+  padding-left: 24px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.user-table {
+  width: 100%;
+  border-spacing: 0 0.75rem; /* vertical spacing between rows */
+}
+
+.user-table thead {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.user-table th,
+.user-table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left; /* left-align headers and cells */
+}
+
+.user-table tbody tr {
+  display: table-row; /* keep semantics */
+  background: transparent; /* transparent card background */
+  box-shadow: none; /* remove drop shadow to keep outline look clean */
+}
+
+.user-table tbody tr th,
+.user-table tbody tr td {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12); /* visible white outline on cells */
+}
+
+.user-table tbody tr th + th,
+.user-table tbody tr th + td,
+.user-table tbody tr td + th,
+.user-table tbody tr td + td {
+  border-left-color: transparent;
+}
+
+.user-table tbody tr th:first-child,
+.user-table tbody tr td:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.user-table tbody tr th:last-child,
+.user-table tbody tr td:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+@media (max-width: 640px) {
+  .user-table thead {
+    display: none;
+  }
+  .user-table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem 1.rem;
+    padding: 1.75rem;
+  }
+  .user-table tbody tr th[scope="row"] {
+    font-weight: 600;
+    grid-column: 1 / -1;
+  }
+  .user-table tbody tr td {
+    text-align: left;
+  }
+}
+
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+.search-form {
+  margin-bottom: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.search-input {
+  padding: 6px 8px;
+  flex: 1;
+  max-width: 360px;
+}
+
+.search-button {
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.app-container {
+  padding: 16px;
+}
+
+.error-message {
+  color: red;
+}
+
+.pipeline-health {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-indicator.passing {
+  background: green;
+}
+
+.status-indicator.failing {
+  background: red;
+}
+
+.status-indicator.unknown {
+  background: gray;
+}
+
+.pipeline-health-text {
+  font-weight: 600;
+}

@@ -1,0 +1,15 @@
+node_modules
+/server/node_modules
+dist
+build
+.git
+.env
+.vscode
+.idea
+.DS_Store
+coverage
+npm-debug.log
+yarn-error.log
+*.log
+src/**/*.test.*
+src/**/__snapshots__

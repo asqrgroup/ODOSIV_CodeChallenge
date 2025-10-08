@@ -1,0 +1,12 @@
+{
+  "id": "integer",
+  "name": "string",
+  "high_bpm": "integer",
+  "low_bpm": "integer",
+  "avg_bpm": "number (float)",
+  "avg_confidence": "number (0.0 - 1.0)",
+  "bpm_stddev": "number",
+  "sample_count": "integer",
+  "window": { "start": "ISO8601 timestamp", "end": "ISO8601 timestamp" },
+  "last_updated": "ISO8601 timestamp"
+}
