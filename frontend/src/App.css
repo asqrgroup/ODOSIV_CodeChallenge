@@ -1,7 +1,16 @@
+html {
+  overscroll-behavior: none;
+}
+
 #root {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 0 0 4rem 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
 }
 
 .app-header {
@@ -190,11 +199,11 @@ tr th {
 }
 
 .status-indicator.passing {
-  background: green;
+  background: rgb(146, 246, 146);
 }
 
 .status-indicator.failing {
-  background: red;
+  background: rgb(255, 105, 105);
 }
 
 .status-indicator.unknown {
