@@ -110,16 +110,76 @@ tr th {
 
 .user-table tbody tr th:focus,
 .user-table tbody tr td:focus {
-  outline: 2px solid #4A90E2;
+  outline: 3px solid #4A90E2;
   outline-offset: 2px;
   background: rgba(74, 144, 226, 0.1);
+  box-shadow: 0 0 0 1px rgba(74, 144, 226, 0.5);
 }
 
 .user-table tbody tr th:focus-visible,
 .user-table tbody tr td:focus-visible {
-  outline: 2px solid #4A90E2;
+  outline: 3px solid #4A90E2;
   outline-offset: 2px;
   background: rgba(74, 144, 226, 0.1);
+  box-shadow: 0 0 0 1px rgba(74, 144, 226, 0.5);
+}
+
+
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .user-table tbody tr th:focus,
+  .user-table tbody tr td:focus,
+  .user-table tbody tr th:focus-visible,
+  .user-table tbody tr td:focus-visible {
+    outline: 4px solid;
+    outline-offset: 2px;
+  }
+  
+  .user-table tbody tr {
+    border: 2px solid;
+  }
+}
+
+/* Enhanced zoom support */
+@media (min-resolution: 144dpi) {
+  .user-table th,
+  .user-table td {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Table container focus management */
+.table-container:focus {
+  outline: 3px solid #4A90E2;
+  outline-offset: 2px;
+}
+
+.table-container:focus-within {
+  outline: none;
+}
+
+/* Ensure table is accessible at 200% zoom */
+@media (max-width: 80rem) {
+  .table-container {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .user-table {
+    min-width: 50rem;
+  }
+  
+  .user-table th,
+  .user-table td {
+    min-width: 5rem;
+    white-space: nowrap;
+  }
+  
+  .user-table tbody tr th:first-child,
+  .user-table tbody tr td:first-child {
+    min-width: 8rem;
+  }
 }
 
 .user-table tbody tr th + th,
@@ -177,7 +237,15 @@ tr th {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 3rem;
+  color: inherit;
+}
 
+.search-input:focus,
+.search-input:focus-visible {
+  outline: 3px solid #4A90E2;
+  outline-offset: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(74, 144, 226, 0.5);
 }
 
 .search-button {
@@ -188,6 +256,20 @@ tr th {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 3rem;
   color: lightgray;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.search-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.search-button:focus,
+.search-button:focus-visible {
+  outline: 3px solid #4A90E2;
+  outline-offset: 2px;
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(74, 144, 226, 0.5);
 }
 
 .table-container {
