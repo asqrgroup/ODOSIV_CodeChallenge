@@ -22,9 +22,8 @@ body {
 
 .app-container {
   padding: 1rem 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: #f0f0f0;
   backdrop-filter: blur(10px);
   height: 80vh;
 }
@@ -44,34 +43,37 @@ h1 {
 
 h2 {
   font-size: 2.5rem;
-  font-weight: 100;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .table-container {
   max-height: 65vh;
   overflow-y: auto;
   border-radius: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: #d9e8f6;
 }
 
 .user-table {
   width: 100%;
   border-spacing: 0 0.75rem;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .user-table thead {
-  border-bottom: 1px solid rgba(0,0,0,0.08);
   position: sticky;
   top: 0;
 }
 
 .user-table thead.sticky {
-  background: black;
-  color: lightgray;
   z-index: 1;
-  border-radius: 2rem;
+}
+
+.user-table thead tr {
+  color: black;
+  background: white;
+  border: 1px solid black;
+  border-radius: 3rem;
 }
 
 th {
@@ -81,11 +83,11 @@ th {
 tr td,
 tr th {
   font-size: .9em;
-  font-weight: 100;
+  font-weight: 400;
 }
 
 tr th {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .user-table th,
@@ -96,16 +98,29 @@ tr th {
 
 .user-table tbody tr {
   display: table-row;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
   box-shadow: none;
   overflow-x: auto;
+}
+
+.user-table {
+  border-spacing: 0 0.25rem;
+  padding: 1rem;
+}
+
+/* alternate tbody row backgrounds: odd = white, even = blue */
+.user-table tbody tr:nth-child(odd) {
+  background: #73b3e7;
+  color: #000000;
+}
+.user-table tbody tr:nth-child(even) {
+  background: #ffffff;
+  color: #000000;
 }
 
 .user-table tbody tr th,
 .user-table tbody tr td {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(0,0,0,0.12);
 }
 
 .user-table tbody tr th:focus,
@@ -126,7 +141,7 @@ tr th {
 .user-table tbody tr th + td,
 .user-table tbody tr td + th,
 .user-table tbody tr td + td {
-  border-left-color: transparent;
+  border-left-color: rgba(0,0,0,0.12);
 }
 
 .user-table tbody tr th:first-child,
@@ -140,9 +155,24 @@ tr th {
   border-bottom-right-radius: 0.5rem;
 }
 
+/* header cells should have borders and rounded corners to match body */
+.user-table thead tr th {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.12);
+  padding: 0.5rem 0.75rem;
+}
+.user-table thead tr th:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.user-table thead tr th:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
 @media (max-width: 40em) {
   .user-table thead {
-    display: none;
+    display: table-header-group;
   }
   .user-table tbody tr {
     display: grid;
@@ -173,9 +203,9 @@ tr th {
   padding: 1rem 1.5rem;
   flex: 1;
   max-width: 22.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid grey;
   border-radius: 3rem;
 
 }
