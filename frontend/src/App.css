@@ -8,8 +8,8 @@
   --table-even: #ffffff;
   --border: rgba(0,0,0,0.12);
   --accent: #4A90E2;
-  --passing: rgb(146, 246, 146);
-  --failing: rgb(255, 105, 105);
+  --passing: green;
+  --failing: red;
   --unknown: gray;
 }
 
@@ -191,7 +191,6 @@ tr th {
 }
 
 .search-form {
-  margin-bottom: 0.75rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -219,7 +218,7 @@ tr th {
 }
 
 .error-message {
-  color: red;
+  color: var(--failing);
 }
 
 .pipeline-health {
