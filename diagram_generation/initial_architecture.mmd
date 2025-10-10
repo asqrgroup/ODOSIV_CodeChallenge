@@ -1,0 +1,111 @@
+%% Mermaid Diagram for Initial State (PoC) using C4 Style
+
+flowchart TD
+
+subgraph dataScientistUser[Data Scientist/User]
+    h1[-Person-]:::type
+    d1[A user consuming the dashboard to view aggregate statistics and \n pipeline health.]:::description
+end
+dataScientistUser:::person
+
+dataScientistUser-- "Views dashboard" --> s4
+
+subgraph s1[Realtime Data Ingestion System]
+    h11[-Software System-]:::type
+    d11[Simulated real-time ingestion by handling S3 file upload events for sample data files and sending file content to the ELT system.]:::description
+    subgraph S3RawData[Raw Data Bucket]
+        h2[Container: S3]:::type
+        d2[Stores raw, unvalidated JSON files from the challenge sample data.]:::description
+    end
+    S3RawData:::internalContainer
+
+    subgraph IngestionLambda[Ingestion Lambda]
+        h3[Container: AWS Lambda]:::type
+        d3[Triggered by S3 upload. Reads JSON file and writes event records to RDS.]:::description
+    end
+    IngestionLambda:::internalContainer
+
+    S3RawData -- "S3 File Upload Event Trigger" --> IngestionLambda
+end
+s1:::internalSystem
+
+IngestionLambda -- "Parse JSON files & Write Raw Event Records to RDS" --> RawTable
+
+subgraph s2[ELT System - RDS Postgres]
+    h4[-Software System-]:::type
+    d4[Monolithic data processing pipeline executed entirely within a single RDS Postgres instance.]:::description
+
+    subgraph PostgresDB[RDS Postgres Container]
+        h5[Container: Postgres RDS]:::type
+        d5[Handles storage for raw, refined, and aggregated data, plus all ELT logic.]:::description
+        
+        RawTable[DB Table: Raw Data]
+        RefineFunc[DB Function: Clean & Refine]
+        RefinedTable[DB Table: Refined Data]
+        AggregateFunc[DB Function: Aggregate]
+        AggregatedTable[DB Table: Aggregated Data]
+
+        %% Internal ELT flow - Raw -> Refined
+        RawTable -- "Write Trigger" --> RefineFunc
+        RefineFunc -- "Writes Clean Data" --> RefinedTable
+
+        %% Internal ELT flow - Refined -> Aggregated
+        RefinedTable -- "Cron Schedule Read" --> AggregateFunc
+        AggregateFunc -- "Writes Aggregated Metrics" --> AggregatedTable
+    end
+end
+s2:::internalSystem
+
+subgraph s3[API System]
+    h6[-Software System-]:::type
+    d6[Provides public access to aggregated user statistics via a REST API.]:::description
+
+    subgraph APIGateway[API Gateway]
+        h7[Container: REST API]:::type
+        d7[Publicly exposes three main endpoints for aggregated user data.]:::description
+    end
+    APIGateway:::internalContainer
+
+    subgraph QueryLambda[Aggregation Query Lambda]
+        h8[Container: AWS Lambda]:::type
+        d8[Queries the aggregated data table in RDS and formats the result as JSON.]:::description
+    end
+    QueryLambda:::internalContainer
+
+    APIGateway -- "Public API Request" --> QueryLambda
+    QueryLambda -- "Returns HTTP Response" --> APIGateway
+end
+s3:::internalSystem
+
+s3 -- "API Calls (Public)" --> s4
+
+subgraph s4[Frontend System]
+    h9[-Software System-]:::type
+    d9[The user-facing dashboard for reporting statistics and pipeline health.]:::description
+
+    subgraph FrontendS3[Static React Frontend]
+        h10[Container: S3 Bucket Static Hosting]:::type
+        d10[Hosts the public, static React application files.]:::description
+    end
+    FrontendS3:::internalContainer
+end
+s4:::internalSystem
+
+FrontendS3 -- "Data Read API Requests" --> APIGateway
+APIGateway -- "Data API Response" --> FrontendS3
+
+%% High-Level Integration Points
+s1 -- "Raw Data Write" --> s2
+s3 -- "Aggregated Data Query Access" --> s2
+QueryLambda -- "Queries Aggregated Table" --> AggregatedTable
+AggregatedTable -- "Returns Aggregated User Data" --> QueryLambda
+
+%% Element type definitions (Copied from your example for consistency)
+classDef person fill: #BF40BF
+classDef internalContainer fill: #1168bd 
+classDef externalSystem fill: #08427b
+classDef internalSystem fill: #999999
+
+classDef type stroke-width:0px, color:#fff, fill:transparent, font-size:12px
+classDef description stroke-width:0px, color:#fff, fill:transparent, font-size:13px
+
